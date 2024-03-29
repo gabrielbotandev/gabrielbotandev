@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=0:0092ff,100:005596&height=175&animation=fadeIn&text=Welcome!&fontColor=FFFFFF&fontSize=40&fontAlignY=35)
+![header](https://capsule-render.vercel.app/api?type=waving&color=0:0092ff,100:005596&height=175&animation=fadeIn&text=Hello!&fontColor=FFFFFF&fontSize=40&fontAlignY=35)
 ![header](https://capsule-render.vercel.app/api?type=transparent&height=175&animation=fadeIn&text=I'm%20Gabriel%20Botan&fontColor=0092ff&fontSize=50&fontAlignY=15&desc=&descAlign=58&descAlignY=35)
 <h3 align="center">Connect with me:</h3>
 <p align="center">
