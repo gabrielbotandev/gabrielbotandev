@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=0:0092ff,100:005596&height=175&animation=fadeIn&text=&fontColor=FFFFFF&fontSize=40&fontAlignY=35)
+![header](https://capsule-render.vercel.app/api?type=waving&color=0:0092ff,100:005596&height=175&animation=fadeIn&text=Welcome%20to%20my%20profile!%20👋&fontColor=FFFFFF&fontSize=40&fontAlignY=35)
 
 <h1 align="center" style="color:#0092ff">Welcome to my profile! 👋</h1>
 
