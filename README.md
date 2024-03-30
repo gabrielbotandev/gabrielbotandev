@@ -28,5 +28,19 @@
 ![prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
 
 </div>
+<div align="center">
+
+## Stats
+
+<p align="center">
+  
+[![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=gabrielbotandev&show_icons=true&rank_icon=github&include_all_commits=true&hide_border=true&theme=transparent#gh-dark-mode-only)](https://github.com/gabrielbotandev/github-readme-stats#gh-dark-mode-only)
+[![Anurag's GitHub stats-Light](https://github-readme-stats.vercel.app/api?username=gabrielbotandev&show_icons=true&rank_icon=github&include_all_commits=true&hide_border=true&theme=transparent#gh-light-mode-only)](https://github.com/gabrielbotandev/github-readme-stats#gh-light-mode-only)
+[![portfolio](https://github-readme-stats.vercel.app/api/pin/?username=gabrielbotandev&repo=gabrielbotandev.github.io)](https://github.com/gabrielbotandev/gabrielbotandev.github.io)
+<!-- ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=gabrielbotandev&layout=compact) -->
+
+</p>
+
+</div>
 
 ![footer](https://capsule-render.vercel.app/api?section=footer&type=waving&color=0:0092ff,100:005596&height=175)
