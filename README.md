@@ -6,6 +6,8 @@
 <a href="https://stackoverflow.com/users/23562400/botan" target="blank"><img align="center" src="https://img.shields.io/badge/Stack_Overflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white" alt="botan" /></a>
 <a href="https://www.instagram.com/botan.gabriel/" target="blank"><img align="center" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="botan.gabriel" /></a>
 </p>
+<br/>
+<br/>
 
 <div align="">
 
