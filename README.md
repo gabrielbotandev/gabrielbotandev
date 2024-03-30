@@ -9,7 +9,7 @@
 <br/>
 <br/>
 
-<div align="">
+<div align="center">
 
 ## Skills
 
