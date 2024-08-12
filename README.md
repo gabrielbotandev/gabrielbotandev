@@ -1,4 +1,4 @@
-# Hello! I'm Gabriel Botan 👋
+# Hello! I'm Gabriel Botan <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Hand%20gestures/Waving%20Hand.png" width="40" height="40" />
 
 I`m a multiplatform software development student and cybersecurity enthusiast.
 
