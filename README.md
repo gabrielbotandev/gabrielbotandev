@@ -7,8 +7,7 @@ I`m a multiplatform software development student and cybersecurity enthusiast.
 <a href="https://stackoverflow.com/users/23562400/botan" target="blank"><img align="center" src="https://img.shields.io/badge/Stack_Overflow-242938?style=for-the-badge&logo=stack-overflow&logoColor=white" alt="botan" /></a>
 <a href="https://www.instagram.com/botan.gabriel/" target="blank"><img align="center" src="https://img.shields.io/badge/Instagram-242938?style=for-the-badge&logo=instagram&logoColor=white" alt="botan.gabriel" /></a>
 
-</br>
-</br>
+#
 
 ### Languages & technologies
 
@@ -22,9 +21,13 @@ I`m a multiplatform software development student and cybersecurity enthusiast.
     <img src="https://skillicons.dev/icons?i=vscode,git,figma,kali"/>
 </a>
 
-### GitHub Stats
+#
 
+<div align=center>
+    
 [![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=gabrielbotandev&show_icons=true&rank_icon=github&include_all_commits=true&hide_border=true&theme=transparent#gh-dark-mode-only)](https://github.com/gabrielbotandev/github-readme-stats#gh-dark-mode-only)
 [![Anurag's GitHub stats-Light](https://github-readme-stats.vercel.app/api?username=gabrielbotandev&show_icons=true&rank_icon=github&include_all_commits=true&hide_border=true&theme=transparent#gh-light-mode-only)](https://github.com/gabrielbotandev/github-readme-stats#gh-light-mode-only)
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=gabrielbotandev&layout=compact&hide_border=true&theme=transparent)
+
+</div>
 
