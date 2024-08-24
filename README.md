@@ -15,8 +15,8 @@ I`m a multiplatform software development student and cybersecurity enthusiast.
 #
 
 <div align="center"> 
-    <img height=200 align="center" src="https://github-readme-stats.vercel.app/api?username=gabrielbotandev&show_icons=true&rank_icons=&include_all_commits=false&theme=transparent&hide_border=true" /> 
-    <img height=200 align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=gabrielbotandev&layout=compact&theme=transparent&hide_border=true" /> 
+    <img height=150 align="center" src="https://github-readme-stats.vercel.app/api?username=gabrielbotandev&show_icons=true&rank_icons=&include_all_commits=false&theme=transparent&hide_border=true" /> 
+    <img height=150 align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=gabrielbotandev&layout=compact&theme=transparent&hide_border=true" /> 
 </div>
 
 
