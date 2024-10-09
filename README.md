@@ -1,6 +1,6 @@
 # Hello! I'm Gabriel Botan <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Hand%20gestures/Waving%20Hand.png" width="40" height="40" />
 
-I`m a multiplatform software development student and cybersecurity enthusiast.
+I’m a student at the Faculty of Technology in São Paulo, Brazil, currently focused on back-end development. I’m actively learning PHP, Laravel, and other back-end technologies. Feel free to explore my projects and contribute!
 
 ### Connect with me!
     
