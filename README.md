@@ -36,7 +36,7 @@ I’m a student at the Faculty of Technology in São Paulo, Brazil, currently fo
   <img 
     align="left" 
     alt="GitHub Stats" 
-    height="200" 
+    height="180" 
     style="padding-right: 10px;" 
     src="https://github-readme-stats.vercel.app/api?username=gabrielbotandev&show_icons=true&rank_icons=&include_all_commits=false&theme=transparent&hide_border=true" 
   />
@@ -44,7 +44,7 @@ I’m a student at the Faculty of Technology in São Paulo, Brazil, currently fo
 <img 
       align="left" 
       alt="GitHub Stats" 
-      height="200" 
+      height="180" 
       src="https://github-readme-stats.vercel.app/api/top-langs/?username=gabrielbotandev&layout=compact&theme=transparent&hide_border=true&langs_count=9&hide=blade" 
   />
 
