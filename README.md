@@ -42,7 +42,7 @@ Currently focused on back-end development. I’m actively learning, TypeScript, 
       align="left" 
       alt="GitHub Stats" 
       height="200" 
-      src="https://github-readme-stats.vercel.app/api/top-langs/?username=gabrielbotandev&layout=compact&theme=transparent&hide_border=true&langs_count=9&hide=blade" 
+      src="https://github-readme-stats.vercel.app/api/top-langs/?username=gabrielbotandev&layout=compact&theme=transparent&hide_border=true&langs_count=9&hide=blade&hide=php" 
   />
 </p>
 
