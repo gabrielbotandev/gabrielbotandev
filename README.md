@@ -2,7 +2,7 @@
 
 **`Software developer`**
 
-Currently focused on back-end development. I’m actively learning, TypeScript, Node, NestJS and other technologies. Feel free to explore my projects and contribute!
+Currently focused on backend development. I’m actively learning TypeScript, Node, NestJS and other technologies. Feel free to explore my projects and contribute!
 
 ### Connect with me!
     
