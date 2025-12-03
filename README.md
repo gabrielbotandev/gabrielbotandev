@@ -2,7 +2,7 @@
 
 **`Software developer`**
 
-Currently focused on backend development. I’m actively learning TypeScript, Node, NestJS and other technologies. Feel free to explore my projects and contribute!
+Currently focused on backend development. I’m actively learning TypeScript, Golang, Node, NestJS and other technologies. Feel free to explore my projects and contribute!
 
 ### Connect with me!
     
@@ -15,6 +15,7 @@ Currently focused on backend development. I’m actively learning TypeScript, No
 ### Languages & tools
 
 <img align="left" alt="TypeScript" title="TypeScript" width="30px" style="padding-right: 10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
+<img align="left" alt="Golang" title="Golang" width="30px" style="padding-right: 10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg" />
 <img align="left" alt="Node" title="Node" width="30px" style="padding-right: 10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" />
 <img align="left" alt="Nest" title="Nest" width="30px" style="padding-right: 10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg" />
 <img align="left" alt="React" title="React" width="30px" style="padding-right: 10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />          
@@ -37,6 +38,3 @@ Currently focused on backend development. I’m actively learning TypeScript, No
       height="200" 
       src="https://github-readme-stats.vercel.app/api/top-langs/?username=gabrielbotandev&layout=compact&theme=holi&hide=blade,php,css,scss,html,powershell" 
   />
-
-
-
