@@ -1,10 +1,8 @@
 # Hello! I'm Gabriel Botan <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Hand%20gestures/Waving%20Hand.png" width="40" height="40" />
 
-Working as a backend developer at [Alboom](https://www.alboompro.com/en/), focused on TypeScript and NestJS, with previous experience in building scalable web clients using Vue.js, Tailwind and DaisyUI.
+Working as a backend developer at [Alboom](https://www.alboompro.com/en/), I’m actively learning TypeScript, Golang, Node, NestJS and other technologies. Feel free to explore my projects and contribute!.
 
 Currently building [CoFundei](https://cofundei.com), the mobile-first matching platform revolutionizing how entrepreneurs, investors, and co-founders connect in Brazil's innovation ecosystem. Think Tinder meets LinkedIn, but specifically designed for the entrepreneurial world.
-
-I’m actively learning TypeScript, Golang, Node, and other technologies. Feel free to explore my projects and contribute!
 
 ### Connect with me!
     
