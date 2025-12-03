@@ -1,10 +1,15 @@
 # Hello! I'm Gabriel Botan <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Hand%20gestures/Waving%20Hand.png" width="40" height="40" />
 
-Currently focused on backend development. I’m actively learning TypeScript, Golang, Node, NestJS and other technologies. Feel free to explore my projects and contribute!
+Working as a backend developer at Alboom, focused on TypeScript and NestJS, with previous experience in building scalable web clients using Vue.js, Tailwind and DaisyUI.
+
+Currently building [CoFundei](https://cofundei.com), the mobile-first matching platform revolutionizing how entrepreneurs, investors, and co-founders connect in Brazil's innovation ecosystem. Think Tinder meets LinkedIn, but specifically designed for the entrepreneurial world.
+
+I’m actively learning TypeScript, Golang, Node, and other technologies. Feel free to explore my projects and contribute!
 
 ### Connect with me!
     
 <a href="https://www.linkedin.com/in/gabrielficciobotan/" target="blank"><img align="center" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="gabrielficciobotan"/></a>
+<a href="https://x.com/gabrielbotandev/" target="blank"><img align="center" src="https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white" alt="botan.gabriel" /></a>
 <a href="https://www.instagram.com/botan.gabriel/" target="blank"><img align="center" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="botan.gabriel" /></a>
 
 #
