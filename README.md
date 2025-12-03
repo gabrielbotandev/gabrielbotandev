@@ -1,13 +1,10 @@
 # Hello! I'm Gabriel Botan <img src="https://github.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/blob/master/Emojis/Hand%20gestures/Waving%20Hand.png" width="40" height="40" />
 
-**`Software developer`**
-
 Currently focused on backend development. I’m actively learning TypeScript, Golang, Node, NestJS and other technologies. Feel free to explore my projects and contribute!
 
 ### Connect with me!
     
 <a href="https://www.linkedin.com/in/gabrielficciobotan/" target="blank"><img align="center" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="gabrielficciobotan"/></a>
-<a href="https://stackoverflow.com/users/23562400/botan" target="blank"><img align="center" src="https://img.shields.io/badge/Stack_Overflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white" alt="botan" /></a>
 <a href="https://www.instagram.com/botan.gabriel/" target="blank"><img align="center" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="botan.gabriel" /></a>
 
 #
