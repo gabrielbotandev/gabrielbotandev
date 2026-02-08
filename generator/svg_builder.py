@@ -27,9 +27,7 @@ class SVGBuilder:
         )
 
     def render_stats_card(self) -> str:
-        metrics = self.config.get("stats", {}).get("metrics", [
-            "commits", "stars", "prs", "issues", "repos"
-        ])
+        metrics = self.config["stats"]["metrics"]
         return stats_card.render(
             stats=self.stats,
             metrics=metrics,

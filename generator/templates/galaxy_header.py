@@ -35,9 +35,24 @@ def _build_glow_filters(galaxy_arms, arm_colors):
 def _build_starfield(username, width, height, theme):
     """Build all 3 star depth layers (bg, mid, fg)."""
     star_layers = [
-        {"count": 40, "r_min": 0.3, "r_max": 0.8, "o_min": 0.08, "o_max": 0.3, "dur_min": 5.0, "dur_max": 9.0, "label": "bg"},
-        {"count": 20, "r_min": 0.6, "r_max": 1.2, "o_min": 0.15, "o_max": 0.5, "dur_min": 3.5, "dur_max": 7.0, "label": "mid"},
-        {"count": 10, "r_min": 1.0, "r_max": 1.8, "o_min": 0.4, "o_max": 0.7, "dur_min": 2.0, "dur_max": 4.5, "label": "fg"},
+        {
+            "count": 40, "label": "bg",
+            "r_min": 0.3, "r_max": 0.8,
+            "o_min": 0.08, "o_max": 0.3,
+            "dur_min": 5.0, "dur_max": 9.0,
+        },
+        {
+            "count": 20, "label": "mid",
+            "r_min": 0.6, "r_max": 1.2,
+            "o_min": 0.15, "o_max": 0.5,
+            "dur_min": 3.5, "dur_max": 7.0,
+        },
+        {
+            "count": 10, "label": "fg",
+            "r_min": 1.0, "r_max": 1.8,
+            "o_min": 0.4, "o_max": 0.7,
+            "dur_min": 2.0, "dur_max": 4.5,
+        },
     ]
 
     stars = []
@@ -50,15 +65,13 @@ def _build_starfield(username, width, height, theme):
         so = deterministic_random(f"{username}_so_{lbl}", n, layer["o_min"], layer["o_max"])
         sd = deterministic_random(f"{username}_sd_{lbl}", n, layer["dur_min"], layer["dur_max"])
 
+        accent_colors = {
+            0: theme.get("synapse_cyan", "#00d4ff"),
+            4: theme.get("dendrite_violet", "#a78bfa"),
+            8: theme.get("axon_amber", "#ffb020"),
+        }
         for i in range(n):
-            if i % 12 == 0:
-                fill = theme.get("synapse_cyan", "#00d4ff")
-            elif i % 12 == 4:
-                fill = theme.get("dendrite_violet", "#a78bfa")
-            elif i % 12 == 8:
-                fill = theme.get("axon_amber", "#ffb020")
-            else:
-                fill = "#ffffff"
+            fill = accent_colors.get(i % 12, "#ffffff")
 
             delay = f"{sd[i] * 0.3:.1f}s"
             stars.append(
@@ -321,8 +334,6 @@ def render(
         galaxy_arms: list of arm configs
         projects: list of project dicts
     """
-    width, height = WIDTH, HEIGHT
-    cx, cy = CENTER_X, CENTER_Y
     username = config.get("username", "user")
     profile = config.get("profile", {})
     name = profile.get("name", username)
@@ -336,7 +347,7 @@ def render(
     # Generate arm points for all arms
     all_arm_points = [
         spiral_points(
-            cx, cy, START_ANGLES[arm_idx % len(START_ANGLES)],
+            CENTER_X, CENTER_Y, START_ANGLES[arm_idx % len(START_ANGLES)],
             NUM_POINTS, MAX_RADIUS, SPIRAL_TURNS, X_SCALE, Y_SCALE
         )
         for arm_idx in range(len(galaxy_arms))
@@ -362,17 +373,17 @@ def render(
     )
 
     # ── Build all layers via helper functions ──
-    stars_str = _build_starfield(username, width, height, theme)
-    outer_nebula, inner_nebula = _build_nebulae(cx, cy, theme)
+    stars_str = _build_starfield(username, WIDTH, HEIGHT, theme)
+    outer_nebula, inner_nebula = _build_nebulae(CENTER_X, CENTER_Y, theme)
     shoot_stars_str = _build_shooting_stars()
     arm_paths_str, arm_particles_str = _build_spiral_arms(galaxy_arms, arm_colors, all_arm_points)
-    arm_dots_str = _build_tech_labels(galaxy_arms, arm_colors, all_arm_points, cx, cy)
+    arm_dots_str = _build_tech_labels(galaxy_arms, arm_colors, all_arm_points, CENTER_X, CENTER_Y)
     project_stars_str = _build_project_stars(projects, galaxy_arms, arm_colors, all_arm_points)
-    orbital_rings = _build_orbital_rings(cx, cy, theme)
-    core = _build_galaxy_core(cx, cy, theme, initial)
+    orbital_rings = _build_orbital_rings(CENTER_X, CENTER_Y, theme)
+    core = _build_galaxy_core(CENTER_X, CENTER_Y, theme, initial)
 
     # ── Assemble SVG ──
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">
   <defs>
     <style>
       .star-bg {{
@@ -403,8 +414,8 @@ def render(
         animation: pulse-core 3s ease-in-out infinite 1.5s;
       }}
       @keyframes pulse-core {{
-        0%, 100% {{ stroke-opacity: 0.3; transform: scale(1); transform-origin: {cx}px {cy}px; }}
-        50% {{ stroke-opacity: 0.8; transform: scale(1.06); transform-origin: {cx}px {cy}px; }}
+        0%, 100% {{ stroke-opacity: 0.3; transform: scale(1); transform-origin: {CENTER_X}px {CENTER_Y}px; }}
+        50% {{ stroke-opacity: 0.8; transform: scale(1.06); transform-origin: {CENTER_X}px {CENTER_Y}px; }}
       }}
       .shooting-star {{
         opacity: 0;
@@ -450,7 +461,7 @@ def render(
   </defs>
 
   <!-- 1. Background -->
-  <rect x="0" y="0" width="{width}" height="{height}" rx="12" ry="12" fill="{theme['void']}"/>
+  <rect x="0" y="0" width="{WIDTH}" height="{HEIGHT}" rx="12" ry="12" fill="{theme['void']}"/>
 
   <!-- 2. Outer nebula -->
 {outer_nebula}
@@ -483,7 +494,7 @@ def render(
 {core}
 
   <!-- 12. Profile text -->
-  <text x="{cx}" y="26" text-anchor="middle" fill="{theme['text_bright']}" font-size="20" font-weight="bold" font-family="sans-serif">{esc(name)}</text>
-  <text x="{cx}" y="44" text-anchor="middle" fill="{theme['text_dim']}" font-size="12" font-family="sans-serif">{esc(tagline)}</text>
-  <text x="{cx}" y="{height - 12}" text-anchor="middle" fill="{theme['text_faint']}" font-size="11" font-family="monospace" font-style="italic">{esc(philosophy)}</text>
+  <text x="{CENTER_X}" y="26" text-anchor="middle" fill="{theme['text_bright']}" font-size="20" font-weight="bold" font-family="sans-serif">{esc(name)}</text>
+  <text x="{CENTER_X}" y="44" text-anchor="middle" fill="{theme['text_dim']}" font-size="12" font-family="sans-serif">{esc(tagline)}</text>
+  <text x="{CENTER_X}" y="{HEIGHT - 12}" text-anchor="middle" fill="{theme['text_faint']}" font-size="11" font-family="monospace" font-style="italic">{esc(philosophy)}</text>
 </svg>'''

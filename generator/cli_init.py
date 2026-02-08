@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import os
 import sys
 from typing import Optional
@@ -360,7 +361,4 @@ def _offer_generation():
         print("\nGenerating SVGs...")
         from generator.main import generate
 
-        class _Args:
-            demo = False
-
-        generate(_Args())
+        generate(argparse.Namespace(demo=False))

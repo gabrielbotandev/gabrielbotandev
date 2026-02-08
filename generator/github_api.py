@@ -134,21 +134,8 @@ class GitHubAPI:
 
         # Fetch repos to count stars
         total_stars = 0
-        page = 1
-        while True:
-            repos_resp = self._request(
-                "GET",
-                f"{self.REST_URL}/users/{self.username}/repos",
-                params={"per_page": 100, "page": page, "type": "owner"},
-            )
-            repos_resp.raise_for_status()
-            repos = repos_resp.json()
-            if not repos:
-                break
+        for repos in self._paginate_repos():
             total_stars += sum(r.get("stargazers_count", 0) for r in repos)
-            if len(repos) < 100:
-                break
-            page += 1
 
         # Estimate commits from events (rough approximation without token)
         events_resp = self._request(
@@ -178,6 +165,24 @@ class GitHubAPI:
             "repos": user_data.get("public_repos", 0),
         }
 
+    def _paginate_repos(self):
+        """Yield pages of owned repos from the REST API."""
+        page = 1
+        while True:
+            repos_resp = self._request(
+                "GET",
+                f"{self.REST_URL}/users/{self.username}/repos",
+                params={"per_page": 100, "page": page, "type": "owner"},
+            )
+            repos_resp.raise_for_status()
+            repos = repos_resp.json()
+            if not repos:
+                break
+            yield repos
+            if len(repos) < 100:
+                break
+            page += 1
+
     def _search_count(self, query: str) -> int:
         """Use the GitHub Search API to get a total_count for a query."""
         try:
@@ -196,18 +201,7 @@ class GitHubAPI:
     def fetch_languages(self) -> dict:
         """Fetch language byte counts aggregated across all owned non-fork repos."""
         languages = {}
-        page = 1
-        while True:
-            repos_resp = self._request(
-                "GET",
-                f"{self.REST_URL}/users/{self.username}/repos",
-                params={"per_page": 100, "page": page, "type": "owner"},
-            )
-            repos_resp.raise_for_status()
-            repos = repos_resp.json()
-            if not repos:
-                break
-
+        for repos in self._paginate_repos():
             for repo in repos:
                 if repo.get("fork"):
                     continue
@@ -228,9 +222,4 @@ class GitHubAPI:
                         repo.get("full_name", "unknown"),
                         e,
                     )
-
-            if len(repos) < 100:
-                break
-            page += 1
-
         return languages

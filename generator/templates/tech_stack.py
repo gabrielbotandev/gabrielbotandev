@@ -4,6 +4,8 @@ import math
 
 from generator.utils import calculate_language_percentages, esc, svg_arc_path, resolve_arm_colors
 
+WIDTH = 850
+
 
 def _build_language_bars(lang_data, theme, left_x, start_y):
     """Build the language bar elements (left side of the card).
@@ -46,7 +48,7 @@ def _build_radar_grid(rcx, rcy, grid_rings, theme):
         theme: color palette dict
 
     Returns:
-        list of SVG element strings
+        str of SVG elements for the radar grid
     """
     parts = []
     for ring_r in grid_rings:
@@ -55,7 +57,7 @@ def _build_radar_grid(rcx, rcy, grid_rings, theme):
             f'fill="none" stroke="{theme["text_faint"]}" '
             f'stroke-width="0.5" stroke-dasharray="3,3" opacity="0.25"/>'
         )
-    return parts
+    return "\n".join(parts)
 
 
 def _build_radar_sectors(sector_data, rcx, rcy, radius, theme):
@@ -69,7 +71,7 @@ def _build_radar_sectors(sector_data, rcx, rcy, radius, theme):
         theme: color palette dict
 
     Returns:
-        list of SVG element strings
+        str of SVG elements for the radar sectors
     """
     parts = []
 
@@ -92,7 +94,7 @@ def _build_radar_sectors(sector_data, rcx, rcy, radius, theme):
             f'stroke="{theme["text_faint"]}" stroke-width="0.5" opacity="0.3"/>'
         )
 
-    return parts
+    return "\n".join(parts)
 
 
 def _build_radar_needle(rcx, rcy, radius, theme):
@@ -152,7 +154,7 @@ def _build_radar_labels_and_dots(sector_data, galaxy_arms, rcx, rcy, radius, the
         theme: color palette dict
 
     Returns:
-        list of SVG element strings
+        str of SVG elements for the radar labels and dots
     """
     parts = []
 
@@ -219,7 +221,7 @@ def _build_radar_labels_and_dots(sector_data, galaxy_arms, rcx, rcy, radius, the
                 f'\n    </circle>'
             )
 
-    return parts
+    return "\n".join(parts)
 
 
 def render(
@@ -238,7 +240,6 @@ def render(
         exclude: languages to exclude
         max_display: max languages to show
     """
-    width = 850
     lang_data = calculate_language_percentages(languages, exclude, max_display)
 
     # Left side: Language bars
@@ -277,18 +278,18 @@ def render(
 
     # Build radar SVG elements
     radar_parts = []
-    radar_parts.extend(_build_radar_grid(rcx, rcy, grid_rings, theme))
-    radar_parts.extend(_build_radar_sectors(sector_data, rcx, rcy, radius, theme))
+    radar_parts.append(_build_radar_grid(rcx, rcy, grid_rings, theme))
+    radar_parts.append(_build_radar_sectors(sector_data, rcx, rcy, radius, theme))
     radar_parts.append(_build_radar_needle(rcx, rcy, radius, theme))
-    radar_parts.extend(_build_radar_labels_and_dots(sector_data, galaxy_arms, rcx, rcy, radius, theme))
+    radar_parts.append(_build_radar_labels_and_dots(sector_data, galaxy_arms, rcx, rcy, radius, theme))
 
     radar_str = "\n".join(radar_parts)
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{height}" viewBox="0 0 {WIDTH} {height}">
   <defs/>
 
   <!-- Card background -->
-  <rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="12" ry="12"
+  <rect x="0.5" y="0.5" width="{WIDTH - 1}" height="{height - 1}" rx="12" ry="12"
         fill="{theme['nebula']}" stroke="{theme['star_dust']}" stroke-width="1"/>
 
   <!-- Left: Language Telemetry -->

@@ -13,8 +13,7 @@ def render(stats: dict, metrics: list, theme: dict) -> str:
         metrics: list of metric keys to display
         theme: color palette dict
     """
-    width, height = WIDTH, HEIGHT
-    cell_width = width / len(metrics)
+    cell_width = WIDTH / len(metrics)
 
     # Build metric cells
     cells = []
@@ -49,7 +48,7 @@ def render(stats: dict, metrics: list, theme: dict) -> str:
     cells_str = "\n".join(cells)
     dividers_str = "\n".join(dividers)
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">
   <defs>
     <style>
       .metric-icon {{
@@ -66,7 +65,7 @@ def render(stats: dict, metrics: list, theme: dict) -> str:
   </defs>
 
   <!-- Card background -->
-  <rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="12" ry="12"
+  <rect x="0.5" y="0.5" width="{WIDTH - 1}" height="{HEIGHT - 1}" rx="12" ry="12"
         fill="{theme['nebula']}" stroke="{theme['star_dust']}" stroke-width="1"/>
 
   <!-- Section title -->

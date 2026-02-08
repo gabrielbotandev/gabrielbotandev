@@ -2,6 +2,8 @@
 
 from generator.utils import wrap_text, deterministic_random, esc, resolve_arm_colors
 
+WIDTH, HEIGHT = 850, 220
+
 
 def _build_defs(n, card_width, gap, card_colors, theme):
     """Build all defs (filters, gradients, clip paths, CSS)."""
@@ -74,8 +76,16 @@ def _build_starfield(n, width, height, card_colors, theme):
     """Build the 25-star star field (bg + mid-ground stars)."""
     stars = []
     layers = [
-        {"prefix": "proj-star", "count": 15, "margin": 10, "r": (0.3, 0.9), "o": (0.05, 0.25), "d": (5.0, 8.0), "o_mult": 3, "o_cap": 0.6},
-        {"prefix": "proj-mstar", "count": 10, "margin": 15, "r": (0.5, 1.2), "o": (0.10, 0.40), "d": (3.0, 6.0), "o_mult": 2.5, "o_cap": 0.8},
+        {
+            "prefix": "proj-star", "count": 15, "margin": 10,
+            "r": (0.3, 0.9), "o": (0.05, 0.25), "d": (5.0, 8.0),
+            "o_mult": 3, "o_cap": 0.6,
+        },
+        {
+            "prefix": "proj-mstar", "count": 10, "margin": 15,
+            "r": (0.5, 1.2), "o": (0.10, 0.40), "d": (3.0, 6.0),
+            "o_mult": 2.5, "o_cap": 0.8,
+        },
     ]
     for layer in layers:
         count = layer["count"]
@@ -293,18 +303,16 @@ def render(projects: list, galaxy_arms: list, theme: dict) -> str:
         galaxy_arms: list of arm configs for color mapping
         theme: color palette dict
     """
-    width, height = 850, 220
-
     all_arm_colors = resolve_arm_colors(galaxy_arms, theme)
 
     n = min(len(projects), 3)
 
     if n == 0:
         # No projects — render an empty card
-        return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
-  <rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="12" ry="12"
+        return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">
+  <rect x="0.5" y="0.5" width="{WIDTH - 1}" height="{HEIGHT - 1}" rx="12" ry="12"
         fill="{theme['nebula']}" stroke="{theme['star_dust']}" stroke-width="1"/>
-  <text x="{width / 2}" y="{height / 2}" fill="{theme['text_faint']}" font-size="12"
+  <text x="{WIDTH / 2}" y="{HEIGHT / 2}" fill="{theme['text_faint']}" font-size="12"
         font-family="monospace" text-anchor="middle" dominant-baseline="middle">No featured projects configured</text>
 </svg>'''
 
@@ -314,7 +322,7 @@ def render(projects: list, galaxy_arms: list, theme: dict) -> str:
     else:
         card_width = 240
     total_cards_width = card_width * n
-    gap = (width - total_cards_width) / (n + 1)
+    gap = (WIDTH - total_cards_width) / (n + 1)
 
     # Resolve arm indices and colors per card
     card_arms = []
@@ -331,22 +339,22 @@ def render(projects: list, galaxy_arms: list, theme: dict) -> str:
 
     # ── Layer 1: Background rect ──
     bg = (
-        f'  <rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" '
+        f'  <rect x="0.5" y="0.5" width="{WIDTH - 1}" height="{HEIGHT - 1}" '
         f'rx="12" ry="12" fill="{theme["nebula"]}" '
         f'stroke="{theme["star_dust"]}" stroke-width="1"/>'
     )
 
     # ── Layer 2: Star field (25 particles) ──
-    stars_str = _build_starfield(n, width, height, card_colors, theme)
+    stars_str = _build_starfield(n, WIDTH, HEIGHT, card_colors, theme)
 
     # ── Layer 3: Faint grid overlay ──
-    grid_str = _build_grid_overlay(width, height, theme)
+    grid_str = _build_grid_overlay(WIDTH, HEIGHT, theme)
 
     # ── Layer 4: Connection lines between cards ──
     conn_str = _build_connections(n, card_width, gap)
 
     # ── Layer 5: Title area ──
-    title_str = _build_title_area(n, width, height, theme)
+    title_str = _build_title_area(n, WIDTH, HEIGHT, theme)
 
     # ── Layer 6: Project cards ──
     cards = []
@@ -361,9 +369,9 @@ def render(projects: list, galaxy_arms: list, theme: dict) -> str:
     cards_str = "\n".join(cards)
 
     # ── Layer 7: Global scan line ──
-    scan_line = _build_scan_line(width, theme)
+    scan_line = _build_scan_line(WIDTH, theme)
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">
   <defs>
 {defs_str}
   </defs>

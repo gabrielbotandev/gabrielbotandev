@@ -23,16 +23,14 @@ DEFAULT_THEME = {
 
 def resolve_theme(user_theme: dict) -> dict:
     """Merge user theme overrides with defaults, returning a complete theme dict."""
-    merged = dict(DEFAULT_THEME)
-    if user_theme:
-        merged.update(user_theme)
-    return merged
+    return {**DEFAULT_THEME, **(user_theme or {})}
 
 
 def resolve_arm_colors(galaxy_arms: list, theme: dict) -> list:
     """Return a list of hex color strings, one per arm, resolved from the theme."""
+    fallback = theme.get("synapse_cyan", "#00d4ff")
     return [
-        theme.get(arm.get("color", "synapse_cyan"), theme.get("synapse_cyan", "#00d4ff"))
+        theme.get(arm.get("color", "synapse_cyan"), fallback)
         for arm in galaxy_arms
     ]
 
