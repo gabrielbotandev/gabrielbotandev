@@ -27,23 +27,18 @@ DEMO_LANGUAGES = {
 }
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Generate Galaxy Profile SVGs")
-    parser.add_argument(
-        "--demo",
-        action="store_true",
-        help="Generate SVGs with demo data (no API calls, uses config.example.yml)",
-    )
-    args = parser.parse_args()
-
+def generate(args):
+    """Generate SVGs from config (existing behavior extracted into a function)."""
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
     )
 
+    demo = getattr(args, "demo", False)
+
     # Load config
-    if args.demo:
+    if demo:
         config_path = os.path.join(os.path.dirname(__file__), "..", "config.example.yml")
     else:
         config_path = os.path.join(os.path.dirname(__file__), "..", "config.yml")
@@ -52,7 +47,7 @@ def main():
         with open(config_path, "r") as f:
             config = yaml.safe_load(f)
     except FileNotFoundError:
-        if args.demo:
+        if demo:
             logger.error("config.example.yml not found.")
         else:
             logger.error("config.yml not found. Copy config.example.yml to config.yml and edit it.")
@@ -68,7 +63,7 @@ def main():
 
     logger.info("Generating profile SVGs for @%s...", username)
 
-    if args.demo:
+    if demo:
         logger.info("Demo mode: using hardcoded stats and languages.")
         stats = DEMO_STATS
         languages = DEMO_LANGUAGES
@@ -112,6 +107,38 @@ def main():
         logger.info("Wrote %s", path)
 
     logger.info("Done! 4 SVGs generated.")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Generate Galaxy Profile SVGs")
+    subparsers = parser.add_subparsers(dest="command")
+
+    # Subcommand: init
+    subparsers.add_parser("init", help="Interactive setup wizard to create config.yml")
+
+    # Subcommand: generate
+    gen_parser = subparsers.add_parser("generate", help="Generate SVGs from config")
+    gen_parser.add_argument(
+        "--demo",
+        action="store_true",
+        help="Generate SVGs with demo data (no API calls, uses config.example.yml)",
+    )
+
+    # Top-level --demo for backward compatibility (python -m generator.main --demo)
+    parser.add_argument(
+        "--demo",
+        action="store_true",
+        help="Generate SVGs with demo data (no API calls, uses config.example.yml)",
+    )
+
+    args = parser.parse_args()
+
+    if args.command == "init":
+        from generator.cli_init import run_init
+        run_init()
+    else:
+        # Default behavior: generate (supports both `generate --demo` and `--demo`)
+        generate(args)
 
 
 if __name__ == "__main__":

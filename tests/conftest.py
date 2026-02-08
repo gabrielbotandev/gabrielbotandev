@@ -1,6 +1,11 @@
 """Shared fixtures for galaxy-profile tests."""
 
+import copy
+
 import pytest
+
+from generator.config import validate_config
+from generator.svg_builder import SVGBuilder
 
 
 @pytest.fixture
@@ -65,3 +70,16 @@ def sample_languages():
         "Dockerfile": 15000,
         "CSS": 10000,
     }
+
+
+@pytest.fixture
+def cfg(sample_config):
+    """Return a deep copy of sample_config for mutation-safe tests."""
+    return copy.deepcopy(sample_config)
+
+
+@pytest.fixture
+def svg_builder(sample_config, sample_stats, sample_languages):
+    """Create an SVGBuilder from validated sample fixtures."""
+    config = validate_config(copy.deepcopy(sample_config))
+    return SVGBuilder(config, sample_stats, sample_languages)

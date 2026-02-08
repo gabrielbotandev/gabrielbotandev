@@ -104,6 +104,19 @@ def _build_shooting_stars():
     return "\n".join(shoot_stars)
 
 
+def _points_to_path(points):
+    """Build a quadratic Bezier SVG path string from a list of (x, y) points."""
+    d = f"M {points[0][0]:.1f} {points[0][1]:.1f}"
+    for j in range(1, len(points)):
+        px, py = points[j - 1]
+        x, y = points[j]
+        cpx = (px + x) / 2
+        cpy = (py + y) / 2
+        d += f" Q {px:.1f} {py:.1f} {cpx:.1f} {cpy:.1f}"
+    d += f" L {points[-1][0]:.1f} {points[-1][1]:.1f}"
+    return d
+
+
 def _build_spiral_arms(galaxy_arms, arm_colors, all_arm_points):
     """Build arm paths (segmented fade) and arm particles."""
     arm_paths = []
@@ -120,14 +133,7 @@ def _build_spiral_arms(galaxy_arms, arm_colors, all_arm_points):
             continue
 
         # Build full path string for animateMotion
-        full_path_d = f"M {points[0][0]:.1f} {points[0][1]:.1f}"
-        for j in range(1, len(points)):
-            px, py = points[j - 1]
-            x, y = points[j]
-            cpx = (px + x) / 2
-            cpy = (py + y) / 2
-            full_path_d += f" Q {px:.1f} {py:.1f} {cpx:.1f} {cpy:.1f}"
-        full_path_d += f" L {points[-1][0]:.1f} {points[-1][1]:.1f}"
+        full_path_d = _points_to_path(points)
 
         # Split into segments (Step 4)
         pts_per_seg = len(points) // segment_count
@@ -139,14 +145,7 @@ def _build_spiral_arms(galaxy_arms, arm_colors, all_arm_points):
             if len(seg_pts) < 2:
                 continue
 
-            seg_d = f"M {seg_pts[0][0]:.1f} {seg_pts[0][1]:.1f}"
-            for j in range(1, len(seg_pts)):
-                ppx, ppy = seg_pts[j - 1]
-                sx_p, sy_p = seg_pts[j]
-                cpx = (ppx + sx_p) / 2
-                cpy = (ppy + sy_p) / 2
-                seg_d += f" Q {ppx:.1f} {ppy:.1f} {cpx:.1f} {cpy:.1f}"
-            seg_d += f" L {seg_pts[-1][0]:.1f} {seg_pts[-1][1]:.1f}"
+            seg_d = _points_to_path(seg_pts)
 
             op = opacity_steps[seg]
             sw = width_steps[seg]
@@ -335,13 +334,13 @@ def render(
 
     # ── Spiral geometry (Step 2) ──
     # Generate arm points for all arms
-    all_arm_points = []
-    for arm_idx in range(len(galaxy_arms)):
-        pts = spiral_points(
+    all_arm_points = [
+        spiral_points(
             cx, cy, START_ANGLES[arm_idx % len(START_ANGLES)],
             NUM_POINTS, MAX_RADIUS, SPIRAL_TURNS, X_SCALE, Y_SCALE
         )
-        all_arm_points.append(pts)
+        for arm_idx in range(len(galaxy_arms))
+    ]
 
     # ── Defs: filters, gradients, animations ──
 

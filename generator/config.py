@@ -1,10 +1,6 @@
 """Config validation and defaults for the Galaxy Profile generator."""
 
-import re
-
-from generator.utils import resolve_theme
-
-_HEX_COLOR_RE = re.compile(r"^#[0-9a-fA-F]{6}$")
+from generator.utils import resolve_theme, HEX_COLOR_RE
 
 
 class ConfigError(ValueError):
@@ -72,7 +68,7 @@ def validate_config(config: dict) -> dict:
     if not isinstance(user_theme, dict):
         raise ConfigError("'theme' must be a mapping.")
     for key, value in user_theme.items():
-        if not isinstance(value, str) or not _HEX_COLOR_RE.match(value):
+        if not isinstance(value, str) or not HEX_COLOR_RE.match(value):
             raise ConfigError(
                 f"theme.{key} must be a valid hex color (e.g. #00d4ff), got '{value}'."
             )

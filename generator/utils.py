@@ -1,8 +1,11 @@
 """Utility functions, color maps, math helpers, and SVG icon paths."""
 
+import re
 import math
 import hashlib
 from xml.sax.saxutils import escape as xml_escape
+
+HEX_COLOR_RE = re.compile(r"^#[0-9a-fA-F]{6}$")
 
 # Default deep-space theme palette
 DEFAULT_THEME = {

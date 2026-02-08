@@ -73,36 +73,28 @@ def _build_defs(n, card_width, gap, card_colors, theme):
 def _build_starfield(n, width, height, card_colors, theme):
     """Build the 25-star star field (bg + mid-ground stars)."""
     stars = []
-    # 15 faint bg stars
-    sx = deterministic_random("proj-star-x", 15, 10, width - 10)
-    sy = deterministic_random("proj-star-y", 15, 10, height - 10)
-    sr = deterministic_random("proj-star-r", 15, 0.3, 0.9)
-    so = deterministic_random("proj-star-o", 15, 0.05, 0.25)
-    sd = deterministic_random("proj-star-d", 15, 5.0, 8.0)
-    for i in range(15):
-        fill = card_colors[i % n] if i % 4 == 0 else theme["text_dim"]
-        stars.append(
-            f'  <circle cx="{sx[i]:.1f}" cy="{sy[i]:.1f}" r="{sr[i]:.1f}" '
-            f'fill="{fill}" opacity="{so[i]:.2f}">'
-            f'<animate attributeName="opacity" values="{so[i]:.2f};{min(so[i] * 3, 0.6):.2f};{so[i]:.2f}" '
-            f'dur="{sd[i]:.1f}s" repeatCount="indefinite"/>'
-            f'</circle>'
-        )
-    # 10 mid-ground stars
-    mx = deterministic_random("proj-mstar-x", 10, 15, width - 15)
-    my = deterministic_random("proj-mstar-y", 10, 15, height - 15)
-    mr = deterministic_random("proj-mstar-r", 10, 0.5, 1.2)
-    mo = deterministic_random("proj-mstar-o", 10, 0.10, 0.40)
-    md = deterministic_random("proj-mstar-d", 10, 3.0, 6.0)
-    for i in range(10):
-        fill = card_colors[i % n] if i % 4 == 0 else theme["text_dim"]
-        stars.append(
-            f'  <circle cx="{mx[i]:.1f}" cy="{my[i]:.1f}" r="{mr[i]:.1f}" '
-            f'fill="{fill}" opacity="{mo[i]:.2f}">'
-            f'<animate attributeName="opacity" values="{mo[i]:.2f};{min(mo[i] * 2.5, 0.8):.2f};{mo[i]:.2f}" '
-            f'dur="{md[i]:.1f}s" repeatCount="indefinite"/>'
-            f'</circle>'
-        )
+    layers = [
+        {"prefix": "proj-star", "count": 15, "margin": 10, "r": (0.3, 0.9), "o": (0.05, 0.25), "d": (5.0, 8.0), "o_mult": 3, "o_cap": 0.6},
+        {"prefix": "proj-mstar", "count": 10, "margin": 15, "r": (0.5, 1.2), "o": (0.10, 0.40), "d": (3.0, 6.0), "o_mult": 2.5, "o_cap": 0.8},
+    ]
+    for layer in layers:
+        count = layer["count"]
+        m = layer["margin"]
+        pfx = layer["prefix"]
+        sx = deterministic_random(f"{pfx}-x", count, m, width - m)
+        sy = deterministic_random(f"{pfx}-y", count, m, height - m)
+        sr = deterministic_random(f"{pfx}-r", count, *layer["r"])
+        so = deterministic_random(f"{pfx}-o", count, *layer["o"])
+        sd = deterministic_random(f"{pfx}-d", count, *layer["d"])
+        for i in range(count):
+            fill = card_colors[i % n] if i % 4 == 0 else theme["text_dim"]
+            stars.append(
+                f'  <circle cx="{sx[i]:.1f}" cy="{sy[i]:.1f}" r="{sr[i]:.1f}" '
+                f'fill="{fill}" opacity="{so[i]:.2f}">'
+                f'<animate attributeName="opacity" values="{so[i]:.2f};{min(so[i] * layer["o_mult"], layer["o_cap"]):.2f};{so[i]:.2f}" '
+                f'dur="{sd[i]:.1f}s" repeatCount="indefinite"/>'
+                f'</circle>'
+            )
     return "\n".join(stars)
 
 
@@ -179,8 +171,9 @@ def _build_title_area(n, width, height, theme):
     return "\n".join(title_parts)
 
 
-def _build_project_card(i, proj, arm, color, card_width, card_cx, card_x, theme):
+def _build_project_card(i, proj, arm, color, card_width, card_x, theme):
     """Build a single project card."""
+    card_cx = card_x + card_width / 2
     repo_name = proj["repo"].split("/")[-1] if "/" in proj["repo"] else proj["repo"]
     desc = proj.get("description", "")
     # Wrap description to fit card width (approx chars)
@@ -323,12 +316,14 @@ def render(projects: list, galaxy_arms: list, theme: dict) -> str:
     total_cards_width = card_width * n
     gap = (width - total_cards_width) / (n + 1)
 
-    # Resolve colors per card
+    # Resolve arm indices and colors per card
+    card_arms = []
     card_colors = []
     for i in range(n):
         proj = projects[i]
         arm_idx = proj.get("arm", 0)
         arm_idx = arm_idx if arm_idx < len(galaxy_arms) else 0
+        card_arms.append(arm_idx)
         card_colors.append(all_arm_colors[arm_idx])
 
     # ── Layer 0: Defs ──
@@ -357,14 +352,11 @@ def render(projects: list, galaxy_arms: list, theme: dict) -> str:
     cards = []
     for i in range(n):
         proj = projects[i]
-        arm_idx = proj.get("arm", 0)
-        arm = galaxy_arms[arm_idx] if arm_idx < len(galaxy_arms) else galaxy_arms[0]
+        arm = galaxy_arms[card_arms[i]]
         color = card_colors[i]
-
         card_x = gap + i * (card_width + gap)
-        card_cx = card_x + card_width / 2
 
-        cards.append(_build_project_card(i, proj, arm, color, card_width, card_cx, card_x, theme))
+        cards.append(_build_project_card(i, proj, arm, color, card_width, card_x, theme))
 
     cards_str = "\n".join(cards)
 

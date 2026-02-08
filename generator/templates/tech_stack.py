@@ -105,7 +105,7 @@ def _build_radar_needle(rcx, rcy, radius, theme):
         theme: color palette dict
 
     Returns:
-        list containing one SVG element string for the needle group
+        SVG element string for the needle group
     """
     scan_color = theme.get("synapse_cyan", "#00d4ff")
     tip_x = rcx
@@ -137,7 +137,7 @@ def _build_radar_needle(rcx, rcy, radius, theme):
         f'\n    </g>'
     )
 
-    return [needle]
+    return needle
 
 
 def _build_radar_labels_and_dots(sector_data, galaxy_arms, rcx, rcy, radius, theme):
@@ -255,12 +255,10 @@ def render(
     for i, arm in enumerate(galaxy_arms):
         color = all_arm_colors[i]
         items = arm.get("items", [])
-        detected = sum(1 for item in items if item in languages)
         sector_data.append({
             "name": arm["name"],
             "color": color,
             "items": len(items),
-            "detected": detected,
             "start_deg": i * 120 + 1,
             "end_deg": (i + 1) * 120 - 1,
         })
@@ -281,7 +279,7 @@ def render(
     radar_parts = []
     radar_parts.extend(_build_radar_grid(rcx, rcy, grid_rings, theme))
     radar_parts.extend(_build_radar_sectors(sector_data, rcx, rcy, radius, theme))
-    radar_parts.extend(_build_radar_needle(rcx, rcy, radius, theme))
+    radar_parts.append(_build_radar_needle(rcx, rcy, radius, theme))
     radar_parts.extend(_build_radar_labels_and_dots(sector_data, galaxy_arms, rcx, rcy, radius, theme))
 
     radar_str = "\n".join(radar_parts)
