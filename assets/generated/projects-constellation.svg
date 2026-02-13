@@ -132,9 +132,9 @@
     <circle cx="226.66666666666666" cy="85" r="8" fill="#a78bfa" opacity="0.15" filter="url(#proj-glow-0)"/>
     <circle cx="226.66666666666666" cy="85" r="5" fill="#a78bfa" opacity="0.7"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="0.0s" repeatCount="indefinite"/><animate attributeName="r" values="4.5;5.5;4.5" dur="3s" begin="0.0s" repeatCount="indefinite"/></circle>
     <circle cx="226.66666666666666" cy="85" r="2" fill="#ffffff" opacity="0.9"/>
-    <text x="226.66666666666666" y="111" fill="#f1f5f9" font-size="14" font-weight="bold" font-family="sans-serif" text-anchor="middle">pusher-monitor</text>
-    <text x="226.66666666666666" y="129" fill="#94a3b8" font-size="11" font-family="sans-serif" text-anchor="middle">Monitor your Pusher channels and events in</text>
-    <text x="226.66666666666666" y="144" fill="#94a3b8" font-size="11" font-family="sans-serif" text-anchor="middle">real-time.</text>
+    <text x="226.66666666666666" y="111" fill="#f1f5f9" font-size="14" font-weight="bold" font-family="sans-serif" text-anchor="middle">develop</text>
+    <text x="226.66666666666666" y="129" fill="#94a3b8" font-size="11" font-family="sans-serif" text-anchor="middle">A platform to make online learning more</text>
+    <text x="226.66666666666666" y="144" fill="#94a3b8" font-size="11" font-family="sans-serif" text-anchor="middle">engaging and effective, focused on a better</text>
     <rect x="190.66666666666666" y="163" width="72" height="18" rx="9" ry="9" fill="#a78bfa" opacity="0.12"/>
     <text x="226.66666666666666" y="175" fill="#a78bfa" font-size="9" font-family="monospace" text-anchor="middle" opacity="0.85">Frontend</text>
   </g>
@@ -149,8 +149,9 @@
     <circle cx="623.3333333333334" cy="85" r="8" fill="#00d4ff" opacity="0.15" filter="url(#proj-glow-1)"/>
     <circle cx="623.3333333333334" cy="85" r="5" fill="#00d4ff" opacity="0.7"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="0.3s" repeatCount="indefinite"/><animate attributeName="r" values="4.5;5.5;4.5" dur="3s" begin="0.3s" repeatCount="indefinite"/></circle>
     <circle cx="623.3333333333334" cy="85" r="2" fill="#ffffff" opacity="0.9"/>
-    <text x="623.3333333333334" y="111" fill="#f1f5f9" font-size="14" font-weight="bold" font-family="sans-serif" text-anchor="middle">ledgerwise-api</text>
-    <text x="623.3333333333334" y="129" fill="#94a3b8" font-size="11" font-family="sans-serif" text-anchor="middle">API for a financial control app.</text>
+    <text x="623.3333333333334" y="111" fill="#f1f5f9" font-size="14" font-weight="bold" font-family="sans-serif" text-anchor="middle">pusher-monitor</text>
+    <text x="623.3333333333334" y="129" fill="#94a3b8" font-size="11" font-family="sans-serif" text-anchor="middle">Monitor your Pusher channels and events in</text>
+    <text x="623.3333333333334" y="144" fill="#94a3b8" font-size="11" font-family="sans-serif" text-anchor="middle">real-time.</text>
     <rect x="590.8333333333334" y="163" width="65" height="18" rx="9" ry="9" fill="#00d4ff" opacity="0.12"/>
     <text x="623.3333333333334" y="175" fill="#00d4ff" font-size="9" font-family="monospace" text-anchor="middle" opacity="0.85">Backend</text>
   </g>
