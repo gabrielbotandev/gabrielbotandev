@@ -22,10 +22,6 @@
 
 <br/>
 
-<div align="center">
-  <img src="./assets/generated/projects-constellation.svg" width="850" alt="Featured Projects"/>
-</div>
-
 <br/>
 
 <details>
@@ -33,10 +29,9 @@
 
 <br/>
 
-Building tools that make developers' lives easier.
-Passionate about distributed systems, developer experience, and the open-source ecosystem.
+Working as a backend developer, I’m actively learning TypeScript, Golang, Node, NestJS and other technologies. Feel free to explore my projects and contribute!.
 
-**Currently at** Stellar Labs — San Francisco, CA
+**Currently at** Alboom & Fotto — São Paulo, BR
 </details>
 
 <br/>
