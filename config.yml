@@ -1,0 +1,104 @@
+# Galaxy Profile README Configuration
+# Copy this file to config.yml and customize it to make it your own!
+#
+# Usage:
+#   cp config.example.yml config.yml
+#   # Edit config.yml with your details
+#   python -m generator.main
+#
+# Demo mode (no API calls, uses this file directly):
+#   python -m generator.main --demo
+
+# Your GitHub username (required)
+username: gabrielbotandev
+
+# Profile information displayed in the galaxy header
+profile:
+  name: "Gabriel Botan"
+  tagline: "Backend Engineer"
+  company: "Alboom & Fotto"
+  location: "Brazil"
+  bio: |
+    Working as a backend developer at [Alboom](https://www.alboompro.com/en/), I’m actively learning TypeScript, Golang, Node, NestJS and other technologies. Feel free to explore my projects and contribute!.
+  philosophy: ""
+
+# Social links displayed at the bottom of the profile
+social:
+  email: "gabrielficciobotan@gmail.com"
+  linkedin: "gabrielficciobotan"
+  website: ""
+
+# Galaxy arms represent your core focus areas
+# Each arm spirals out from the center with its own color and tech items
+# Available colors: "synapse_cyan", "dendrite_violet", "axon_amber"
+galaxy_arms:
+  - name: "Frontend"
+    color: "dendrite_violet"
+    items:
+      - "TypeScript"
+      - "React"
+      - "Tailwind"
+  - name: "Backend"
+    color: "synapse_cyan"
+    items:
+      - "NestJS"
+      - "Fastify"
+      - "Golang"
+      - "MySQL"
+      - "Redis"
+      - "BullMQ"
+  - name: "DevOps"
+    color: "axon_amber"
+    items:
+      - "Docker"
+      - "GitHub Actions"
+      - "Supabase"
+
+# Featured projects shown as constellation stars
+# Each project needs:
+#   repo: "owner/repo-name"   — GitHub repository path
+#   arm: 0-2                  — Which galaxy arm to associate with (index)
+#   description: "..."        — Short description shown on the card
+projects:
+  - repo: "gabrielbotandev/pusher-monitor"
+    arm: 0
+    description: "Monitor your Pusher channels and events in real-time."
+  - repo: "gabrielbotandev/ledgerwise-api"
+    arm: 1
+    description: "API for a financial control app."
+
+# Theme color overrides (optional — defaults to deep space palette)
+# All values must be valid hex color codes (#RRGGBB)
+theme:
+  void: "#080c14"              # Darkest background
+  nebula: "#0f1623"            # Card backgrounds
+  star_dust: "#1a2332"         # Borders, dividers
+  synapse_cyan: "#00d4ff"      # Primary accent (arm color 1)
+  dendrite_violet: "#a78bfa"   # Secondary accent (arm color 2)
+  axon_amber: "#ffb020"        # Tertiary accent (arm color 3)
+  text_bright: "#f1f5f9"       # Primary text
+  text_dim: "#94a3b8"          # Secondary text
+  text_faint: "#64748b"        # Muted text, labels
+
+# Stats configuration — which metrics to show on the telemetry card
+stats:
+  metrics:
+    - "commits"
+    - "stars"
+    - "prs"
+    - "issues"
+    - "repos"
+
+# Language display settings
+languages:
+  exclude:                     # Languages to hide from the telemetry chart
+    - "HTML"
+    - "CSS"
+    - "Makefile"
+    - "YAML"
+    - "JSON"
+    - "Blade"
+    - "PHP"
+    - "Python"
+
+  max_display: 8               # Maximum number of languages to show
