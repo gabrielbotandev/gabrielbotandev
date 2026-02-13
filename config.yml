@@ -60,7 +60,7 @@ galaxy_arms:
 #   arm: 0-2                  — Which galaxy arm to associate with (index)
 #   description: "..."        — Short description shown on the card
 projects:
-  - repo: "gabrielbotandev/SeedClient/tree/develop"
+  - repo: "gabrielbotandev/SeedClient"
     arm: 0
     description: "A platform to make online learning more engaging and effective, focused on a better student experience."
   - repo: "gabrielbotandev/pusher-monitor"
