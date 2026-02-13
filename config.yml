@@ -60,12 +60,12 @@ galaxy_arms:
 #   arm: 0-2                  — Which galaxy arm to associate with (index)
 #   description: "..."        — Short description shown on the card
 projects:
-  - repo: "gabrielbotandev/pusher-monitor"
+  - repo: "gabrielbotandev/SeedClient/tree/develop"
     arm: 0
-    description: "Monitor your Pusher channels and events in real-time."
-  - repo: "gabrielbotandev/ledgerwise-api"
+    description: "A platform to make online learning more engaging and effective, focused on a better student experience."
+  - repo: "gabrielbotandev/pusher-monitor"
     arm: 1
-    description: "API for a financial control app."
+    description: "Monitor your Pusher channels and events in real-time."
 
 # Theme color overrides (optional — defaults to deep space palette)
 # All values must be valid hex color codes (#RRGGBB)
